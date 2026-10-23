@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveloca</title>
+    <link rel="stylesheet" href="ASM.css">
+</head>
+<body>
+
+    <!-- 1. Thanh menu trên cùng -->
+    <div class="topbar">
+        <p class="logo" onclick="go('top')">Trave<span>Loka</span></p>
+        <div class="menu">
+            <p onclick="go('uudai')">Ưu đãi</p>
+            <p onclick="go('diemden')">Điểm đến</p>
+            <p onclick="go('visao')">Vì sao chọn Traveloka</p>
+            <p onclick="go('lienhe')">Liên hệ</p>
+        </div>
+        <div class="auth">
+            <p class="btn btn-outline">Đăng nhập</p>
+            <p class="btn">Đăng ký</p>
+        </div>
+    </div>
+
+    <!-- 2. Banner + khung tìm kiếm -->
+    <div class="hero" id="top">
+        <p class="hero-title">Khám phá Việt Nam cùng Travelocal</p>
+        <p class="hero-sub">Đặt khách sạn, vé máy bay và vé vui chơi với giá tốt nhất</p>
+
+        <div class="search-box">
+            <!-- Các tab: bấm vào để đổi loại dịch vụ -->
+            <div class="tabs">
+                <p class="tab active" data-place="Thành phố, khách sạn" data-btn="Tìm khách sạn" onclick="chooseTab(this)">🏨 Khách sạn</p>
+                <p class="tab" data-place="Điểm đi - Điểm đến" data-btn="Tìm chuyến bay" onclick="chooseTab(this)">✈️ Vé máy bay</p>
+                <p class="tab" data-place="Ga đi - Ga đến" data-btn="Tìm vé tàu" onclick="chooseTab(this)">🚆 Tàu hỏa</p>
+                <p class="tab" data-place="Địa điểm vui chơi" data-btn="Tìm vé vui chơi" onclick="chooseTab(this)">🎡 Vui chơi</p>
+            </div>
+
+            <div class="fields">
+                <div class="field"><p class="label">Bạn muốn đi đâu?</p><p class="value" id="placeText">Thành phố, khách sạn</p></div>
+                <div class="field"><p class="label">Ngày đi</p><p class="value">Chọn ngày</p></div>
+                <div class="field"><p class="label">Ngày về</p><p class="value">Chọn ngày</p></div>
+                <div class="field"><p class="label">Số khách</p><p class="value">2 người</p></div>
+                <p class="btn btn-orange" id="btnText" onclick="search()">Tìm khách sạn</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Ưu đãi -->
+    <div class="section" id="uudai">
+        <p class="title">Ưu đãi hôm nay</p>
+        <div class="grid">
+            <div class="promo blue"><p class="big">Giảm 30%</p><p>Khách sạn 4 sao tại Đà Nẵng</p><p class="code">Mã: DANANG30</p></div>
+            <div class="promo orange"><p class="big">Giảm 200K</p><p>Vé máy bay nội địa cho lần đặt đầu tiên</p><p class="code">Mã: BAYNGAY</p></div>
+            <div class="promo green"><p class="big">Mua 1 tặng 1</p><p>Vé vui chơi VinWonders Phú Quốc</p><p class="code">Mã: VUIVE</p></div>
+        </div>
+    </div>
+
+    <!-- 4. Điểm đến phổ biến (muốn dùng ảnh của bạn thì đổi đường dẫn trong src) -->
+    <div class="section gray" id="diemden">
+        <p class="title">Điểm đến phổ biến</p>
+        <div class="grid">
+            <div class="card">
+                <img src="picture/da_nang.png" alt="Đà Nẵng">
+                <div class="info"><p class="name">Đà Nẵng</p><p>Biển đẹp, cầu Rồng, Bà Nà Hills</p><p class="price">Từ 450.000đ</p></div>
+            </div>
+            <div class="card">
+                <img src="picture/phu_quoc.png" alt="Phú Quốc">
+                <div class="info"><p class="name">Phú Quốc</p><p>Đảo ngọc với bãi Sao, cáp treo Hòn Thơm</p><p class="price">Từ 620.000đ</p></div>
+            </div>
+            <div class="card">
+                <img src="picture/da_lat.png" alt="Đà Lạt">
+                <div class="info"><p class="name">Đà Lạt</p><p>Thành phố ngàn hoa, khí hậu mát mẻ</p><p class="price">Từ 380.000đ</p></div>
+            </div>
+            <div class="card">
+                <img src="picture/ha_noi.png" alt="Hà Nội">
+                <div class="info"><p class="name">Hà Nội</p><p>Phố cổ, hồ Hoàn Kiếm, ẩm thực đường phố</p><p class="price">Từ 400.000đ</p></div>
+            </div>
+            <div class="card">
+                <img src="picture/nha_trang.png" alt="Nha Trang">
+                <div class="info"><p class="name">Nha Trang</p><p>Lặn biển, tắm bùn khoáng, đảo Hòn Mun</p><p class="price">Từ 480.000đ</p></div>
+            </div>
+            <div class="card">
+                <img src="picture/hoi_an.png" alt="Hội An">
+                <div class="info"><p class="name">Hội An</p><p>Phố đèn lồng, làng rau Trà Quế, cao lầu</p><p class="price">Từ 350.000đ</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Vì sao chọn TraVi -->
+    <div class="section" id="visao">
+        <p class="title">Vì sao chọn TraVi?</p>
+        <div class="grid grid-4">
+            <div class="why"><p class="icon">💰</p><p class="name">Giá tốt nhất</p><p>Hoàn tiền nếu bạn tìm thấy giá rẻ hơn.</p></div>
+            <div class="why"><p class="icon">⚡</p><p class="name">Đặt nhanh</p><p>Chỉ mất vài phút để đặt chỗ.</p></div>
+            <div class="why"><p class="icon">🛡️</p><p class="name">An toàn</p><p>Thanh toán bảo mật, thông tin được bảo vệ.</p></div>
+            <div class="why"><p class="icon">🎧</p><p class="name">Hỗ trợ 24/7</p><p>Luôn sẵn sàng giúp bạn mọi lúc.</p></div>
+        </div>
+    </div>
+
+    <!-- 6. Chân trang -->
+    <div class="footer" id="lienhe">
+        <div class="grid">
+            <div><p class="name">Traveloka</p><p>Nền tảng đặt phòng, vé máy bay và tour du lịch dành cho người Việt.</p></div>
+            <div><p class="name">Liên hệ</p><p>Hotline: 1900 1234</p><p>Email: hotro@travi.vn</p></div>
+            <div><p class="name">Theo dõi chúng tôi</p><p>Facebook · Instagram · YouTube · TikTok</p></div>
+        </div>
+        <p class="copy">&copy; 2026 Travaleka.</p>
+    </div>
+
+    <script>
+        // Bấm menu: cuộn mượt tới phần có id tương ứng
+        function go(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Bấm tab: tô màu tab đang chọn, đổi chữ gợi ý và chữ trên nút
+        function chooseTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById('placeText').textContent = tab.dataset.place;
+            document.getElementById('btnText').textContent = tab.dataset.btn;
+        }
+    </script>
+</body>
+</html>
